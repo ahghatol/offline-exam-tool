@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contnet Player</title>
+</head>
+<body>
+  <div class="contentPreviewCls" style="margin:0px;padding:0px;overflow:hidden">
+    <iframe id="previewContentIframe" width="100%" height="590px" ></iframe>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    var previewContentIframe = $('#previewContentIframe')[0];
+    previewContentIframe.src = './node_modules_link/@project-sunbird/content-player/preview.html?webview=false';
+
+    var pdfData = {
+      "baseDir": "ecar/ecml",
+      "streamingUrl": "/ecar/ecml",
+		"ownershipType":[
+		"createdBy"
+		],
+		"totalQuestions":0,
+		"expires":"2020-03-13T16:19:44.496+0000",
+		"code":"org.sunbird.cK1gZz",
+		"channel":"b00bc992ef25f1a9a8d63291e20efc8d",
+		"downloadUrl":"do_1126872890227343361211/1548744283236_do_1126872890227343361211.zip",
+		"description":"Enter description for Resource",
+		"organisation":[
+		"QA ORG",
+		"Sunbird"
+		],
+		"language":[
+		"English"
+		],
+		"mimeType":"application/vnd.ekstep.ecml-archive",
+		"idealScreenSize":"normal",
+		"createdOn":"2019-01-29T05:55:35.783+0000",
+		"objectType":"Content",
+		"appId":"dev.sunbird.portal",
+		"contentDisposition":"inline",
+		"artifactUrl":"do_1126872890227343361211/1548744283236_do_1126872890227343361211.zip",
+		"contentEncoding":"gzip",
+		"lastUpdatedOn":"2019-01-29T06:44:43.668+0000",
+		"contentType":"Resource",
+		"dialcodeRequired":"No",
+		"lastUpdatedBy":"874ed8a5-782e-4f6c-8f36-e0288455901e",
+		"identifier":"do_1126872890227343361211",
+		"creator":"Creation",
+		"audience":[
+		"Learner"
+		],
+		"createdFor":[
+		"0123653943740170242",
+		"ORG_001"
+		],
+		"visibility":"Default",
+		"os":[
+		"All"
+		],
+		"author":"b00bc992ef25f1a9a8d63291e20efc8d",
+		"consumerId":"9393568c-3a56-47dd-a9a3-34da3c821638",
+		"mediaType":"content",
+		"osId":"org.ekstep.quiz.app",
+		"totalScore":0,
+		"versionKey":"1548744283668",
+		"license":"CC BY-NC 4.0",
+		"idealScreenDensity":"hdpi",
+		"framework":"NCFCOPY",
+		"createdBy":"874ed8a5-782e-4f6c-8f36-e0288455901e",
+		"compatibilityLevel":2,
+		"name":"Untitled Resource",
+		"resourceType":"Learn",
+		"status":"Draft",
+		};
+
+
+    var configuration = {
+  		"context": {
+			"mode": "edit",
+			"contentId": "do_112694410769801216167",
+			"sid": "7W23qQKd_n4wT17sxVeLsG55t2FOZ6Bi",
+			"uid": "874ed8a5-782e-4f6c-8f36-e0288455901e",
+			"channel": "b00bc992ef25f1a9a8d63291e20efc8d",
+			"pdata": {
+				"id": "dev.sunbird.portal",
+				"ver": "1.14.0",
+				"pid": "sunbird-portal.contenteditor"
+			},
+			"app": [],
+			"dims": [],
+			"partner": []
+		  },
+		"config": {
+			"repos": [
+			"/sunbird-plugins/renderer"
+			],
+			"plugins": [
+			{
+				"id": "org.sunbird.player.endpage",
+				"ver": 1.1,
+				"type": "plugin"
+			}
+			],
+			"splash": {
+			"text": "",
+			"icon": "",
+			"bgImage": "assets/icons/splacebackground_1.png",
+			"webLink": ""
+			},
+			"overlay": {
+			"showUser": false
+			},
+			"showEndPage": false
+		},
+		"metadata": pdfData,
+		"data": ""
+	}
+
+	previewContentIframe.onload = function() {
+      var settings = {
+		"url": "http://localhost:8000/body",
+		"method": "GET",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json"
+		},
+      "data": {
+		}
+      };
+
+      $.ajax(settings).done(function (response) {
+        configuration.data = response;
+        previewContentIframe.contentWindow.initializePreview(configuration);
+      });
+    }
+  });
+</script>
+</html>
