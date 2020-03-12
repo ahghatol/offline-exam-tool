@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+      .form-horizontal{
+        box-shadow: 2px 4px 9px 2px rgba(0,0,0,0.2);
+    padding: 50px;
+    margin-top: 100px;
+    background-color: #ffffff;
+      }
+      .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+body{
+  background-image: url("Managed.jpg");
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+      @media (min-width: 768px){
+.form-horizontal .control-label {
+    text-align: left;
+
+}}
+  </style>
+  <script>
+    $(document).ready(function(){
+      $(".toggle-password").click(function() {
+
+      $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function()
+  {
+    $("#dnld").click(function()
+    {
+
+      if(document.getElementById("password-field").value==document.getElementById("cpwd").value)
+      {
+
+        window.location.href="http://localhost:8071/download?id="+document.getElementById("contentId").value+"&password="+document.getElementById("password-field").value;
+      }
+      else
+      {
+        alert("Password and confirm password field does not match");
+      }
+    });
+  });
+</script>
+</head>
+<body>
+
+<div class="container">
+  <form action="" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Content id</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="contentId" placeholder="Enter Content id" name="contentId">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password</label>
+      <div class="col-sm-10">
+          <input id="password-field" type="password" class="form-control" name="password" value="">
+          <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>      </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Confirm password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="cpwd" placeholder="Enter Confirm password" name="c_pwd">
+            </div>
+          </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn" id="dnld" type="button"><i class="fa fa-download"></i> Download</button>
+        </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
